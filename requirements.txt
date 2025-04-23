@@ -1,3 +1,24 @@
-pandas
-kagglehub
-opencv
+# Data Handling
+pandas==2.2.1
+numpy==1.26.4
+
+# Dataset Loading
+kagglehub==0.1.6
+kaggle==1.6.6
+yfinance
+
+# Image/Chart Processing
+opencv-python==4.9.0.80
+matplotlib==3.8.4
+
+# LLaMA + RAG Stack
+llama-cpp-python==0.2.38
+transformers==4.39.3
+sentence-transformers==2.7.0
+faiss-cpu==1.8.0  # For vector similarity search
+langchain==0.1.14
+openai==1.14.3  # Optional, if you use OpenAI API as fallback
+tqdm==4.66.2
+
+# Environment
+python-dotenv==1.0.1  # For managing .env API keys
