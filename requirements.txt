@@ -1,6 +1,7 @@
 # Data Handling
 pandas==2.2.1
 numpy==1.26.4
+ta==0.10.2
 
 # Dataset Loading
 kagglehub==0.1.6
@@ -28,7 +29,7 @@ transformers==4.39.3
 sentence-transformers==2.7.0
 faiss-cpu==1.8.0  # For vector similarity search
 langchain==0.1.14
-openai==1.14.3  # Optional, if you use OpenAI API as fallback
+openai==1.14.3 
 tqdm==4.66.2
 
 # Environment

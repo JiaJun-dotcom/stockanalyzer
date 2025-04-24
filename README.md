@@ -1,4 +1,4 @@
-📈 Stock Price Prediction with LSTM Neural Networks
+📈 Stock Price Prediction with LSTM Neural Networks(under LSTM-StockAnalyzer.py)
 This project explores time series forecasting using Long Short-Term Memory (LSTM), a powerful variant of Recurrent Neural Networks (RNNs), to predict daily stock prices based on historical price data. 
 This implementation demonstrates the use of deep learning for financial forecasting, serves as my foundational exploration into time-series forecasting to work with sequential data.
 
