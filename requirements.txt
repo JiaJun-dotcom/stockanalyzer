@@ -20,8 +20,9 @@ scipy>=1.6.3
 # Image/Chart Processing
 opencv-python==4.9.0.80
 matplotlib==3.8.4
+tensorflow==2.19.0
 
-# LLaMA + RAG Stack
+# LLaMA + RAG Stack(still under exploration to turn into multi-modal AI system)
 llama-cpp-python==0.2.38
 transformers==4.39.3
 sentence-transformers==2.7.0
