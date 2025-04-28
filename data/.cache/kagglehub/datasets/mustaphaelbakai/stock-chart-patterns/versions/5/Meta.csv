@@ -1,3 +1,10 @@
-Path,ClassId,ClassName,TrendId,TrendName,Created,updated,PatternsCount
-Meta/0.jpg,0,Double top,0,bearish,02/07/2023 14:21:46,17/10/2023 00:38:04,170
-Meta/1.jpg,1,Double bottom,1,bullish,02/07/2023 14:21:46,17/10/2023 00:38:04,170
+Path,ClassName,TrendId,TrendName,PatternsCount
+Meta/ascending-triangle.jpg,Ascending Triangle,0,bullish,1
+Meta/bad-earnings.jpg,Bad Earnings,1,bearish,1
+Meta/cup-and-handle.jpg,Cup and Handle,2,bullish,1
+Meta/double-bottom.jpg,Double bottom,3,bullish,170
+Meta/double-top.jpg,Double top,4,bearish,170
+Meta/good-earnings.jpg,Good Earnings,5,bullish,1
+Meta/head-and-shoulders-bottom.jpg,Head and Shoulders(Bottom),6,bullish,1
+Meta/head-and-shoulders-top.jpg,Head and Shoulders(Top),7,bearish,1
+Meta/pullback.jpg,PullBack(Bullish),8,bullish,1
