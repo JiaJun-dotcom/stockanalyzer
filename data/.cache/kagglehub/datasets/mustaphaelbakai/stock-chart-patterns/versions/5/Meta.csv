@@ -2,9 +2,11 @@ Path,ClassName,TrendId,TrendName,PatternsCount
 Meta/ascending-triangle.jpg,Ascending Triangle,0,bullish,1
 Meta/bad-earnings.jpg,Bad Earnings,1,bearish,1
 Meta/cup-and-handle.jpg,Cup and Handle,2,bullish,1
-Meta/double-bottom.jpg,Double bottom,3,bullish,170
-Meta/double-top.jpg,Double top,4,bearish,170
-Meta/good-earnings.jpg,Good Earnings,5,bullish,1
-Meta/head-and-shoulders-bottom.jpg,Head and Shoulders(Bottom),6,bullish,1
-Meta/head-and-shoulders-top.jpg,Head and Shoulders(Top),7,bearish,1
-Meta/pullback.jpg,PullBack(Bullish),8,bullish,1
+Meta/diamond-bottom.jpg,Diamond Bottom,3,bullish,1
+Meta/diamond-top.jpg,Diamond Top,4,bearish,1
+Meta/double-bottom.jpg,Double bottom,5,bullish,170
+Meta/double-top.jpg,Double top,6,bearish,170
+Meta/good-earnings.jpg,Good Earnings,7,bullish,1
+Meta/head-and-shoulders-bottom.jpg,Head and Shoulders(Bottom),8,bullish,1
+Meta/head-and-shoulders-top.jpg,Head and Shoulders(Top),9,bearish,1
+Meta/pullback.jpg,PullBack(Bullish),10,bullish,1
