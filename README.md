@@ -38,17 +38,16 @@ The model forecasts the next day's stock price based on prior days. It plots the
 
 📊 Visualizations:
 📉 Loss Curve – Training vs. Validation loss
-
 📈 Prediction Graph – Actual vs. Predicted stock prices
 
 
 LOOKING FORWARD:
 Multi-Modal AI System(In Progress):
-* Pattern recognition through openCV for "Double Top" and "Double Bottom"
-User Input: Uploads chart image + types eg: "TSLA — what trade can I take here?"
+* Pattern recognition through openCV for various labelled chart patterns.
+User Input: Uploads(or we scan user's screen to detect) chart image + question eg: "TSLA — what trade can I take here?"
 
 1. 🖼️ Image → Pattern
-   - Use a CNN or CLIP to classify the chart as "Double Top"(Pretrain a CNN model here with the dataset we have of "Double Top" and "Double Bottom" price patterns, using just these 2 for now and extend to more patterns in future.)
+   - Use a CNN or CLIP to classify the chart as "Double Top"(Pretrain a CNN model here with the dataset we have of labelled price patterns)
 
 2. 📊 Pull particular stock ticker from market context
    - Fetch eg TSLA, recent OHLCV (open-high-low-close-volume, with specific timeframe, using yfinance api)
