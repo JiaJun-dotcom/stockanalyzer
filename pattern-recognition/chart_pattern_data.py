@@ -1,6 +1,10 @@
 import os
 import shutil
 
+# Splits Patterns folder into labelled data folders of "Double top" and 
+# "Double bottom", ImageFolder can automatically assign labels to images 
+# based on their subfolder names, dont need write own label parsing logic.
+
 patterns_path = r"C:\Users\jj\StockAnalyzer_Project\data\.cache\kagglehub\datasets\mustaphaelbakai\stock-chart-patterns\versions\5\Segmentation"
 
 for filename in os.listdir(patterns_path):
