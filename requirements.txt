@@ -22,6 +22,8 @@ scipy>=1.6.3
 opencv-python==4.9.0.80
 matplotlib==3.8.4
 tensorflow==2.19.0
+torch==2.2.2
+torchvision==0.17.2
 
 # LLaMA + RAG Stack(still under exploration to turn into multi-modal AI system)
 llama-cpp-python==0.2.38
@@ -29,6 +31,10 @@ transformers==4.39.3
 sentence-transformers==2.7.0
 faiss-cpu==1.8.0  # For vector similarity search
 langchain==0.1.14
+langchain-openai>=0.0.5
+chromadb==0.4.24
+tiktoken==0.5.2
+langchainhub==0.1.15
 openai==1.14.3 
 tqdm==4.66.2
 

@@ -6,7 +6,7 @@
 import openai
 import os
 from dotenv import load_dotenv
-from data_preprocessing import get_data_with_indicators
+from technical_indicators import get_data_with_indicators
 
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")

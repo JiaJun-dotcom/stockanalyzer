@@ -1,0 +1,27 @@
+Pattern Recognition:
+- Need to train two types of models first, one for pattern classification(double top or double bottom)
+another for segmentation(teach model where the pattern is in the image, which area, how to spot)
+
+ResNet = "Residual Network", 
+a type of neural network architecture used for image classification.
+
+Stacks lots of image filters(layers), the deeper the layers, the more the 
+model can understand. 
+ResNET is a smart, pretrained neural network that learned from millions of
+images using "shortcut connections" that skip layers.
+
+Load a pretrained ResNet model (like ResNet18 or ResNet50) from PyTorch or 
+TensorFlow.
+Replace the last layer to predict just two classes: “Double Top” or 
+“Double Bottom”.
+Train it on your labeled pattern images.
+^^ Transfer Learning
+
+
+Segmentation model:
+1. You need input images (stock charts).
+2. And mask images — black-and-white images,
+where the white region shows where the pattern is.
+3. Feed them to a segmentation model (like U-Net).
+4. Train it to predict the mask from the chart image.
+
