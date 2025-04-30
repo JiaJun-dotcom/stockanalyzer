@@ -2,18 +2,30 @@ Pattern Recognition:
 - Need to train two types of models first, one for pattern classification(double top or double bottom)
 another for segmentation(teach model where the pattern is in the image, which area, how to spot)
 
-ResNet = "Residual Network", 
+EfficientNet_B0 = "Residual Network", 
 a type of neural network architecture used for image classification.
 
 Stacks lots of image filters(layers), the deeper the layers, the more the 
 model can understand. 
-ResNET is a smart, pretrained neural network that learned from millions of
+EfficientNet_B0 is a smart, pretrained neural network that learned from millions of
 images using "shortcut connections" that skip layers.
 
-Load a pretrained ResNet model (like ResNet18 or ResNet50) from PyTorch or 
-TensorFlow.
+Load EfficientNet_B0 model.
 Replace the last layer to predict just two classes: “Double Top” or 
 “Double Bottom”.
+
+Add dropout layer to prevent overfitting since our dataset small:
+When you apply dropout, during training, a portion of neurons are randomly turned off (dropped out) during each forward pass.
+For example, if the dropout rate is 50%, about half of the neurons will be 
+randomly ignored in each batch.
+This means that each time the model sees an image, a random subset of 
+neurons will learn from the peaks, the troughs, and other features. 
+No single neuron gets to memorize the entire pattern.
+Each neuron now learns a more generalized representation because it must 
+adjust to learn more flexible features rather than becoming overly reliant 
+on one specific part of the pattern 
+(like just focusing on the first peak).
+
 Train it on your labeled pattern images.
 ^^ Transfer Learning
 
@@ -25,3 +37,40 @@ where the white region shows where the pattern is.
 3. Feed them to a segmentation model (like U-Net).
 4. Train it to predict the mask from the chart image.
 
+
+Technicals:
+- Cross Entropy Loss compares probability distribution output by your model 
+(e.g., softmax probabilities) against the true label, which is represented as a one-hot vector.
+
+If your model outputs probabilities like this for 3 classes:
+predicted_probs = [0.1, 0.9, 0.0]  # your model thinks class 1 is most likely
+true_label = [0, 1, 0]             # correct class is class 1
+
+Since the true label is [0, 1, 0], only the probability of the correct class (class 1) is used:
+CEL = −log(0.9) ≈ 0.105 (formula for computing CEL)
+~ The larger the CEL value, means the less accurate the predictions are.
+
+- Optimization is to iteratively adjusts the model’s parameters (weights) to reduce the loss — that is, to make the 
+model predictions closer to the true labels.
+(We want minimal loss, eg as computed by cross entropy loss function, increase probability of predicting true label)
+
+High-level overview of Adam optimizer:
+Looks at the gradient (i.e., how wrong the model is and how to fix it).
+
+Remembers past gradients — not just the current one:
+**  Backpropagation computes gradients
+The loss tells the model:
+“You’re badly misclassifying this input — adjust weights to boost the probability of 'double top' next time.”
+
+Adaptive learning rate for each parameter:
+In the case of double top:
+Concept in Chart | What the Model Learns | Could be...
+Two peaks (the defining feature of double top) | Important spatial feature | Often leads to stable, important weights if consistently seen
+Wicks, volume noise, or tiny fluctuations | Inconsistent info | Could lead to noisy gradients → less stable weights
+(In this way, it learns more for the defining features and improve predicted probability by giving those more weight.)
+
+** It remembers that this pattern was misclassified and stores the direction and size of the error over time (momentum).
+That way, if similar errors keep happening, it builds confidence to adjust more aggressively.
+
+Applies the update using a personalized learning rate for each weight.
+^^ So in the most efficient way, it is able to update the weights of each neuron to predict correctly with least loss.

@@ -4,6 +4,7 @@
 # and integration with financial news or social signals for enhanced decision-making.
 
 import openai
+from langchain_openai import ChatOpenAI
 import os
 from dotenv import load_dotenv
 from technical_indicators import get_data_with_indicators
