@@ -37,6 +37,7 @@ tiktoken==0.5.2
 langchainhub==0.1.15
 openai==1.14.3 
 tqdm==4.66.2
+langgraph==0.4.1
 
 # Environment
 python-dotenv==1.0.1  # For managing .env API keys
