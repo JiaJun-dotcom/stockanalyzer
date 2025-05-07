@@ -14,35 +14,26 @@ def add_chart_noise(img):
     see in real charts due to market volatility or data collection noise.
     
     Grid lines: Simulates the background grid of a trading chart.
-    Price markers: Adds random price labels to make the chart look more realistic.
     """
-    img = img.astype(np.uint8)
+    img = img.astype(np.float32)
     
     # Add Gaussian noise (random variations in pixel values)
     noise_level = np.random.randint(5, 20)
-    noise = np.random.normal(0, noise_level, img.shape).astype(np.uint8)
+    noise = np.random.normal(0, noise_level, img.shape).astype(np.float32)
     noisy = cv2.add(img, noise)
     
-    # Add grid lines with varying opacity
     h, w = img.shape[:2]
-    grid_opacity = np.random.randint(30, 70)
+    grid_color = (200, 200, 200)
     
     # Add horizontal grid lines
     for j in range(0, h, 50):
-        cv2.line(noisy, (0, j), (w, j), (grid_opacity,)*3, 1)
+        cv2.line(noisy, (0, j), (w, j), grid_color, 1)
     
     # Add vertical grid lines
     for i in range(0, w, 50):
-        cv2.line(noisy, (i, 0), (i, h), (grid_opacity,)*3, 1)
+        cv2.line(noisy, (i, 0), (i, h), grid_color, 1)
     
-    # Add random price markers
-    for _ in range(np.random.randint(3, 8)):
-        x = np.random.randint(0, w)
-        y = np.random.randint(0, h)
-        price = f"${np.random.randint(100, 1000)}"
-        cv2.putText(noisy, price, (x, y), cv2.FONT_HERSHEY_SIMPLEX, 
-                   0.5, (grid_opacity,)*3, 1)
-    
+    noisy = np.clip(noisy, 0, 255).astype(np.uint8)
     return noisy
 
 def custom_preprocess(img):
@@ -53,7 +44,7 @@ def custom_preprocess(img):
     return img / 255.0
     
 
-def generate_augmented_images(base_dir, num_augmentations=10):
+def generate_augmented_images(base_dir, num_augmentations):
     """
     Generate and save augmented images directly to the original directories.
     
@@ -80,7 +71,7 @@ def generate_augmented_images(base_dir, num_augmentations=10):
         if not class_folder.is_dir():
             continue
         
-        image_paths = list(class_folder.glob("*.png")) 
+        image_paths = list(class_folder.glob("*.jpg")) 
         print(f"Augmenting class: {class_folder.name} ({len(image_paths)} images)")
 
         for img_path in image_paths:
@@ -89,20 +80,21 @@ def generate_augmented_images(base_dir, num_augmentations=10):
             x = np.expand_dims(x, axis=0)
             
             gen = datagen.flow(x, batch_size=1)
-        # Generate augmented images
+            
+            # Generate augmented images
             for i in range(num_augmentations):
-                aug_img = next(gen)[0].astype(np.uint8)
-                aug_img = add_chart_noise(aug_img)
+                aug_img = next(gen)[0]
+                aug_img = np.clip(aug_img * 255, 0, 255).astype(np.uint8)
                 save_path = class_folder / f"{img_path.stem}_aug_{i}.png"
                 cv2.imwrite(str(save_path), aug_img)
                 print(f"Saved: {save_path}")
 
 def main():
     # Path to your pattern directories
-    base_dir = r"C:\Users\legen\Stock Analyzer\stockanalyzer\data\.cache\kagglehub\datasets\mustaphaelbakai\stock-chart-patterns\versions\5\Patterns"
+    base_dir = Path("/mnt/c/Users/legen/Stock Analyzer/stockanalyzer/data/.cache/kagglehub/datasets/mustaphaelbakai/stock-chart-patterns/versions/5/Patterns")
     
     # Generate 10 augmented images for each pattern
-    generate_augmented_images(base_dir, num_augmentations=10)
+    generate_augmented_images(base_dir, num_augmentations=5)
 
 if __name__ == "__main__":
     main() 
