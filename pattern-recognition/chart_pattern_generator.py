@@ -1,3 +1,5 @@
+# Replace path to patterns directory on your local VM to generate augmented images.
+
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator, img_to_array, load_img
 import numpy as np
@@ -93,7 +95,7 @@ def main():
     # Path to your pattern directories
     base_dir = Path("/mnt/c/Users/legen/Stock Analyzer/stockanalyzer/data/.cache/kagglehub/datasets/mustaphaelbakai/stock-chart-patterns/versions/5/Patterns")
     
-    # Generate 10 augmented images for each pattern
+    # Generate 5 augmented images for each pattern
     generate_augmented_images(base_dir, num_augmentations=5)
 
 if __name__ == "__main__":
