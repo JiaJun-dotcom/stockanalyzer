@@ -41,7 +41,7 @@ def ingest_documents(state: AgentState) -> AgentState:
             ) for doc in state.documents
         ]
         
-        # Split documents if needed
+        # Split documents
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=1000,
             chunk_overlap=100
@@ -68,7 +68,7 @@ def retrieve_context(state: AgentState) -> AgentState:
         vectorstore = get_vectorstore()
         retriever = vectorstore.as_retriever(
             search_type="similarity",
-            search_kwargs={"k": 5}
+            search_kwargs={"k": 5} # Returns 5 most similar documents to the query
         )
         
         # Retrieve documents

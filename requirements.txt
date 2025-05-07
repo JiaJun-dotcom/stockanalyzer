@@ -30,14 +30,14 @@ llama-cpp-python==0.2.38
 transformers==4.39.3
 sentence-transformers==2.7.0
 faiss-cpu==1.8.0  # For vector similarity search
-langchain==0.1.14
-langchain-openai>=0.0.5
-chromadb==0.4.24
-tiktoken==0.5.2
-langchainhub==0.1.15
-openai==1.14.3 
+langchain
+langchain-openai
+chromadb
+tiktoken
+langchainhub
+openai
 tqdm==4.66.2
-langgraph==0.4.1
+langgraph
 
 # Environment
 python-dotenv==1.0.1  # For managing .env API keys
